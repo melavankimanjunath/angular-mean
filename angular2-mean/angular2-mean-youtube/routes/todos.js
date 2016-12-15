@@ -6,7 +6,7 @@ var db = mongojs('mongodb://localhost:27017/local', ['todos']);
 
 
 // GET All tasks
-router.get('/tasks',function(req,res,next){
+router.get('/todos',function(req,res,next){
     db.collection('todos').find(function(error,todos){
         if(error){
             res.send(error);
@@ -16,7 +16,7 @@ router.get('/tasks',function(req,res,next){
 });
 
 // GET single task
-router.get('/task/id/:id',function(req,res,next){
+router.get('/todo/id/:id',function(req,res,next){
     db.collection('todos').findOne({ _id : mongojs.ObjectId(req.params.id)},function(error,todos){
         if(error){
             res.send(error);
@@ -26,7 +26,7 @@ router.get('/task/id/:id',function(req,res,next){
 });
 
 // POST save task
-router.post('/task',function(req,res,next){
+router.post('/todos',function(req,res,next){
     var todo = req.body;
     if(!todo.title){
         res.status(400);
@@ -34,7 +34,7 @@ router.post('/task',function(req,res,next){
             "errorMessage":"Bad data"
         });
     }else{
-        db.collection('todos').save(task,function(error,todos){
+        db.collection('todos').save(todo,function(error,todos){
             if(error){
                 res.send(error);
             }
@@ -44,7 +44,7 @@ router.post('/task',function(req,res,next){
 });
 
 // DELETE task
-router.delete('/task/id/:id',function(req,res,next){
+router.delete('/todo/id/:id',function(req,res,next){
     db.collection('todos').remove({ _id : mongojs.ObjectId(req.params.id)},function(error,todos){
         if(error){
             res.send(error);
@@ -54,21 +54,21 @@ router.delete('/task/id/:id',function(req,res,next){
 });
 
 // PUT update task
-router.put('/task/id/:id',function(req,res,next){
+router.put('/todo/id/:id',function(req,res,next){
     var todo = req.body;
-    var updTask = {};
+    var updTodo = {};
 
     if(todo){
-        updTask = todo;
+        updTodo = todo;
     }
 
-    if(!updTask){
+    if(!updTodo){
         res.status(400);
         res.json({
             "errorMessage":"Bad data"
         });
     }
-    db.collection('todos').update({ _id : mongojs.ObjectId(req.params.id)},updTask,{},function(error,todos){
+    db.collection('todos').update({ _id : mongojs.ObjectId(req.params.id)},updTodo,{},function(error,todos){
         if(error){
             res.send(error);
         }

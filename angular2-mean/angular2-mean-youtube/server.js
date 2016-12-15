@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 
 var index = require('./routes/index');
-var task = require('./routes/task');
+var todos = require('./routes/todos');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
 
 app.use('/',index);
-app.use('/api',task);
+app.use('/api',todos);
 
 app.listen(port,function(){
     console.log('Server started on port: ' + port);
