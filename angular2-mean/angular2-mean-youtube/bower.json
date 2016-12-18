@@ -1,0 +1,21 @@
+{
+  "name": "angular2-mean-youtube",
+  "description": "angular2 with get and post",
+  "main": "server.js",
+  "authors": [
+    "shekhar"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/shekhra400/angular-mean",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
