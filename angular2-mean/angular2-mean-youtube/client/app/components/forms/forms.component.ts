@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder,Validators } from '@angular/forms';
 
 @Component({
   moduleId:module.id,
@@ -8,8 +9,26 @@ import { Component } from '@angular/core';
 })
 export class FormsComponent {
   posts: any = [];
-
-  constructor() {
-    console.log('shekhar');
+  loginForm;
+  
+  protected _buildForm(){
+    this.loginForm = this._formBuilder.group({
+      email:["",Validators.required],
+      password:["",Validators.required]
+    });
   }
+
+  constructor(private _formBuilder: FormBuilder) {
+    this._buildForm();
+    
+  }
+
+  doLogin(){
+    console.log(this.loginForm.value);
+  }
+
+  reset(){
+    this.loginForm.reset();
+  }
+
 }

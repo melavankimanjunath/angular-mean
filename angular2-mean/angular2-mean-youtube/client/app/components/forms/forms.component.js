@@ -9,11 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var FormsComponent = (function () {
-    function FormsComponent() {
+    function FormsComponent(_formBuilder) {
+        this._formBuilder = _formBuilder;
         this.posts = [];
-        console.log('shekhar');
+        this._buildForm();
     }
+    FormsComponent.prototype._buildForm = function () {
+        this.loginForm = this._formBuilder.group({
+            email: ["", forms_1.Validators.required],
+            password: ["", forms_1.Validators.required]
+        });
+    };
+    FormsComponent.prototype.doLogin = function () {
+        console.log(this.loginForm.value);
+    };
+    FormsComponent.prototype.reset = function () {
+        this.loginForm.reset();
+    };
     return FormsComponent;
 }());
 FormsComponent = __decorate([
@@ -23,7 +37,7 @@ FormsComponent = __decorate([
         templateUrl: './forms.component.html',
         styleUrls: ['./forms.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [forms_1.FormBuilder])
 ], FormsComponent);
 exports.FormsComponent = FormsComponent;
 //# sourceMappingURL=forms.component.js.map

@@ -16,6 +16,7 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var todos_component_1 = require("./components/todos/todos.component");
 var forms_component_1 = require("./components/forms/forms.component");
+var contact_component_1 = require("./components/forms/contact.component");
 var ROUTES = [
     {
         path: '',
@@ -24,6 +25,10 @@ var ROUTES = [
     {
         path: 'forms',
         component: forms_component_1.FormsComponent
+    },
+    {
+        path: 'contacts',
+        component: contact_component_1.ContactComponent
     }
 ];
 var AppModule = (function () {
@@ -37,12 +42,14 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             router_1.RouterModule.forRoot(ROUTES)
         ],
         declarations: [
             app_component_1.AppComponent,
             todos_component_1.TodosComponent,
-            forms_component_1.FormsComponent
+            forms_component_1.FormsComponent,
+            contact_component_1.ContactComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     }),
