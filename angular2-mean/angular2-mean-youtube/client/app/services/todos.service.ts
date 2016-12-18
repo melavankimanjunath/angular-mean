@@ -8,7 +8,7 @@ export class TodoService{
 
     }
     getTodos(){
-        return this._http.get('http://localhost:3030/api/todos')
+        return this._http.get('/api/todos')
             .map(res=>res.json())
             ;
     }
@@ -16,7 +16,7 @@ export class TodoService{
         var headers = new Headers();
         headers.append('Content-Type','application/json')
         return this._http.post(
-                            'http://localhost:3030/api/todos',
+                            '/api/todos',
                             JSON.stringify(newTodo),
                             {headers:headers}
                             )
@@ -25,7 +25,7 @@ export class TodoService{
     }
 
     deleteTodo(id){
-       return this._http.delete('http://localhost:3030/api/todo/id/'+id)
+       return this._http.delete('/api/todo/id/'+id)
        .map(res=>res.json())
             ;
     }

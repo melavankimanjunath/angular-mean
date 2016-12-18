@@ -7,7 +7,7 @@ var todos = require('./routes/todos');
 
 var app = express();
 
-var port = 3030;
+var port = 3080;
 
 // View engine
 
@@ -24,8 +24,14 @@ app.use(express.static(path.join(__dirname,'client')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
 
-app.use('/',index);
+// app.use('/',index);
 app.use('/api',todos);
+
+
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/index.html'));
+});
 
 app.listen(port,function(){
     console.log('Server started on port: ' + port);
