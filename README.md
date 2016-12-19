@@ -1,3 +1,6 @@
+#create db "local" in mongodb
+#create documents "contacts" & "todos"
+
 #cd angular2-mean/angular2-mean-youtube
 #npm install
 #bower install
