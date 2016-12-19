@@ -6,3 +6,4 @@
 #npm install -g nodemon
 #cd ../
 #nodemon
+open localhost:3040/
