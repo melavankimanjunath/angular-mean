@@ -11,38 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var TodoService = (function () {
-    function TodoService(_http) {
+var ContactService = (function () {
+    function ContactService(_http) {
         this._http = _http;
     }
-    TodoService.prototype.getTodos = function () {
-        return this._http.get('/api/todos')
-            .map(function (res) { return res.json(); });
-    };
-    TodoService.prototype.addTodo = function (newTodo) {
+    ContactService.prototype.saveContacts = function (formData) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this._http.post('/api/todos', JSON.stringify(newTodo), { headers: headers })
+        return this._http.post('/api/contacts', JSON.stringify(formData), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    TodoService.prototype.deleteTodo = function (id) {
-        return this._http.delete('/api/todo/id/' + id)
-<<<<<<< HEAD
-            .map(function (res) { return res.json(); });
-    };
-    TodoService.prototype.udpateStatus = function (_todo) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this._http.put('/api/todo/id/' + _todo._id, JSON.stringify(_todo), { headers: headers })
-=======
->>>>>>> 542f3318caf6005a4c1a49aec349459b8005fa82
-            .map(function (res) { return res.json(); });
-    };
-    return TodoService;
+    return ContactService;
 }());
-TodoService = __decorate([
+ContactService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], TodoService);
-exports.TodoService = TodoService;
-//# sourceMappingURL=todos.service.js.map
+], ContactService);
+exports.ContactService = ContactService;
+//# sourceMappingURL=contact.service.js.map

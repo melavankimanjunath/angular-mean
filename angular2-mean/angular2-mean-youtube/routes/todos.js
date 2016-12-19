@@ -76,4 +76,25 @@ router.put('/todo/id/:id',function(req,res,next){
     })
 });
 
+
+
+// POST save task
+router.post('/contacts',function(req,res,next){
+    var contactData = req.body;
+    console.log(contactData);
+    if(!contactData){
+        res.status(400);
+        res.json({
+            "errorMessage":"Bad data"
+        });
+    }else{
+        db.collection('contacts').save(contactData,function(error,contactRes){
+            if(error){
+                res.send(error);
+            }
+            res.json(contactRes);
+        })
+    }
+});
+
 module.exports = router;
