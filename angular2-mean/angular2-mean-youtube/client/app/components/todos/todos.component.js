@@ -40,6 +40,9 @@ var TodosComponent = (function () {
             .subscribe(function (data) {
             if (data.n == 1) {
                 for (var i = 1; i < todos.length; i++) {
+                    if (todos[i]._id == id) {
+                        todos.splice(i, 1);
+                    }
                 }
             }
         });

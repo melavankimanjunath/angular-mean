@@ -27,15 +27,12 @@ var TodoService = (function () {
     };
     TodoService.prototype.deleteTodo = function (id) {
         return this._http.delete('/api/todo/id/' + id)
-<<<<<<< HEAD
             .map(function (res) { return res.json(); });
     };
     TodoService.prototype.udpateStatus = function (_todo) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http.put('/api/todo/id/' + _todo._id, JSON.stringify(_todo), { headers: headers })
-=======
->>>>>>> 542f3318caf6005a4c1a49aec349459b8005fa82
             .map(function (res) { return res.json(); });
     };
     return TodoService;

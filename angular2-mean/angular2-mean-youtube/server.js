@@ -7,11 +7,7 @@ var todos = require('./routes/todos');
 
 var app = express();
 
-<<<<<<< HEAD
 var port = 3040;
-=======
-var port = 3080;
->>>>>>> 542f3318caf6005a4c1a49aec349459b8005fa82
 
 // View engine
 
