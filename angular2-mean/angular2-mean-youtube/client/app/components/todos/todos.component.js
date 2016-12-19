@@ -17,6 +17,7 @@ var TodosComponent = (function () {
         this._todoService.getTodos()
             .subscribe(function (todos) {
             _this.todos = todos;
+            //console.log(this.todos);
         });
     }
     TodosComponent.prototype.addTodo = function (event) {
@@ -34,6 +35,7 @@ var TodosComponent = (function () {
     };
     TodosComponent.prototype.todoDelete = function (id) {
         var todos = this.todos;
+        var customId = '_id';
         this._todoService.deleteTodo(id)
             .subscribe(function (data) {
             if (data.n == 1) {
@@ -44,6 +46,16 @@ var TodosComponent = (function () {
                 }
             }
         });
+    };
+    TodosComponent.prototype.updateStatus = function (todo) {
+        event.preventDefault();
+        var _todo = {
+            _id: todo._id,
+            title: todo.title,
+            isDone: !todo.isDone
+        };
+        this._todoService.udpateStatus(_todo)
+            .subscribe(todo);
     };
     return TodosComponent;
 }());

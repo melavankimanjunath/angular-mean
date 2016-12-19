@@ -12,11 +12,13 @@ import {Todos} from "../../../Todos";
 export class TodosComponent{
     todos: Todos[];
     title: string;
+
     constructor(private _todoService: TodoService){
-        this._todoService.getTodos()
+       this._todoService.getTodos()
             .subscribe(todos => {
                 this.todos = todos;
-            })
+                //console.log(this.todos);
+            })            
     }
 
     addTodo(event) {
@@ -33,8 +35,8 @@ export class TodosComponent{
     }
 
     todoDelete(id){
-        var todos = this.todos;
-        
+        var todos = this.todos;     
+        var customId = '_id';   
         this._todoService.deleteTodo(id)
             .subscribe(data => {
                if(data.n==1){
@@ -45,5 +47,16 @@ export class TodosComponent{
                    }
                }
             });
+    }
+
+    updateStatus(todo) {
+        event.preventDefault();
+        var _todo = {
+            _id:todo._id,
+            title:todo.title,
+            isDone:!todo.isDone
+        }
+        this._todoService.udpateStatus(_todo)
+            .subscribe(todo);
     }
 }

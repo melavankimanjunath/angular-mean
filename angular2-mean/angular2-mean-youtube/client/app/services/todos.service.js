@@ -16,17 +16,23 @@ var TodoService = (function () {
         this._http = _http;
     }
     TodoService.prototype.getTodos = function () {
-        return this._http.get('http://localhost:3030/api/todos')
+        return this._http.get('/api/todos')
             .map(function (res) { return res.json(); });
     };
     TodoService.prototype.addTodo = function (newTodo) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this._http.post('http://localhost:3030/api/todos', JSON.stringify(newTodo), { headers: headers })
+        return this._http.post('/api/todos', JSON.stringify(newTodo), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     TodoService.prototype.deleteTodo = function (id) {
-        return this._http.delete('http://localhost:3030/api/todo/id/' + id)
+        return this._http.delete('/api/todo/id/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    TodoService.prototype.udpateStatus = function (_todo) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this._http.put('/api/todo/id/' + _todo._id, JSON.stringify(_todo), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return TodoService;
