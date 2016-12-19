@@ -29,4 +29,16 @@ export class TodoService{
        .map(res=>res.json())
             ;
     }
+    
+    udpateStatus(_todo){
+        var headers = new Headers();
+        headers.append('Content-Type','application/json')
+        return this._http.put(
+                            '/api/todo/id/'+_todo._id,
+                            JSON.stringify(_todo),
+                            {headers:headers}
+                            )
+            .map(res=>res.json())
+            ;
+    }
 }

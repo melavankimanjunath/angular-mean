@@ -4,8 +4,8 @@ import { FormBuilder,Validators } from '@angular/forms';
 @Component({
   moduleId:module.id,
   selector: 'app-form',
-  templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.css']
+  templateUrl: './forms.component.html'
+  // styleUrls: ['./forms.component.css']
 })
 export class FormsComponent {
   posts: any = [];

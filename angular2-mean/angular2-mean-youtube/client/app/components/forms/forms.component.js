@@ -34,8 +34,7 @@ FormsComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'app-form',
-        templateUrl: './forms.component.html',
-        styleUrls: ['./forms.component.css']
+        templateUrl: './forms.component.html'
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder])
 ], FormsComponent);
